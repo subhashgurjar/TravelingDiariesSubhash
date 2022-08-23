@@ -8,18 +8,27 @@ namespace TravelingDiaries.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IPlaceRepository placeRepository;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
-        public HomeController(ILogger<HomeController> logger, IPlaceRepository placeRepository)
+        public HomeController(ILogger<HomeController> logger, IPlaceRepository placeRepository, IHttpContextAccessor httpContextAccessor)
         {
             _logger = logger;
             this.placeRepository = placeRepository;
+            this.httpContextAccessor = httpContextAccessor;
         }
 
         public IActionResult Index()
         {
-            var places = placeRepository.GetAllPlaces();
-            return View(places);
+          
+            
+            return View();
 
+        }
+
+        public IActionResult Search(string Value)
+        {
+            var place = placeRepository.GetAllPlaces().Where(x=>x.PlaceName.ToLower().Contains(Value.ToLower()));
+            return View(place);
         }
 
         public IActionResult Privacy()

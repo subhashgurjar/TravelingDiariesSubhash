@@ -31,8 +31,10 @@
 }
 body{
     font-family:sans-serif;
+
   
 }
+
 
 
     </style>
@@ -40,11 +42,16 @@ body{
 </head>
 <body >
     <header>
-       <nav class="navbar navbar-expand-lg navbar-dark hide-navigation-item" style="background:rgba(0,0,0, 0.3);width:100vw;height:12vh;margin-top:4px;margin-bottom:10px;margin-left:-10px; font-weight: 100;color:white;font-size: large">
+       <nav class="navbar navbar-expand-lg navbar-dark hide-navigation-item" style="background:rgba(0,0,0, 0.3);width:100vw;height:12vh;margin-top:10px;margin-bottom:10px;margin-left:-10px; font-weight: 100;color:white;font-size: large">
                  @*Logo Added*@
-    <a class="navbar-brand" style="margin-top:60px;margin-right:50px;margin-left:20px">
+    <a class="navbar-brand" style="margin-top:0px;margin-right:50px;margin-left:20px">
       <div class="logo-image">
-            <img src="~/Images/icons8-duolingo-logo-48.png" class="img-fluid">
+            <img src="~/Logo.jpeg" style="width: 80px;
+    height: 80px;
+    
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -10px;" class="img-fluid">
       </div>
 </a>
 
@@ -56,7 +63,7 @@ body{
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor03">
-      <ul class="navbar-nav me-auto" style="margin-top:0px;margin-left:8.5vw">
+      <ul class="navbar-nav me-auto" style="margin-top:5px;margin-left:8.5vw">
         <li class="nav-item">
           <a class="nav-link " asp-action="Index" asp-controller="Home">Home
             <span class="visually-hidden">(current)</span>
@@ -76,23 +83,18 @@ body{
                         </li>
                         <li><partial name = "_LoginPartial"/></li>
 
+    
             <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">CM</a>
-          <div class="dropdown-menu" style="background: rgba(255, 255, 255, 0.2)">
-            <a style="color:black;" class="dropdown-item" asp-action="Create" asp-controller="ContentManagement">Create Place</a>
-            <a style="color:black;" class="dropdown-item" asp-action="CM" asp-controller="ContentManagement"> Edit Places</a>
-            <a style="color:black;" class="dropdown-item" asp-action="CM" asp-controller="ContentManagement"> Delete Places</a>
-            <div class="dropdown-divider"></div>
-            @*<a class="dropdown-item" href="#">Separated link</a>*@
-          </div>
+         @await Component.InvokeAsync("CM")
         </li>
 
-       @*  <li class="nav-item">
-          <a  asp-action="Index" asp-controller="ShoppingCart" class="nav-link" style="margin-left:340px";><i class="bi bi-cart3"></i>
+       <li class="nav-item">
+          <a  asp-action="Index" asp-controller="ShoppingCart" class="nav-link" style="margin-left:100px";><i class="bi bi-cart3"></i>
                  @await Component.InvokeAsync("CartValue")
               Basket</a>
-        </li>*@
+        </li>
       
+        
       
       </ul>
     </div>
